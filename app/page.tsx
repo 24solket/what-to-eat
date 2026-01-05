@@ -148,34 +148,16 @@ export default function Home() {
 
   const handleFindPlaces = async (menu: Menu | RecommendedMenu) => {
     setSelectedMenu(menu as RecommendedMenu);
-    setPlacesLoading(true);
     setShowModal(true);
     setPlaces([]);
-    setSearchUrls(null);
 
-    try {
-      const query = `${menu.name} 맛집`;
-      const lat = userLocation?.lat || 37.5665;
-      const lon = userLocation?.lon || 126.978;
-
-      const res = await fetch(`/api/places?query=${encodeURIComponent(query)}&lat=${lat}&lon=${lon}`);
-      const data: PlacesResponse = await res.json();
-
-      if (data.hasApiKey && data.places.length > 0) {
-        setPlaces(data.places);
-      } else if (data.searchUrls) {
-        setSearchUrls(data.searchUrls);
-      }
-    } catch (error) {
-      console.error('Failed to fetch places:', error);
-      const query = `${menu.name} 맛집`;
-      setSearchUrls({
-        kakao: `https://map.kakao.com/link/search/${encodeURIComponent(query)}`,
-        naver: `https://map.naver.com/v5/search/${encodeURIComponent(query)}`,
-      });
-    } finally {
-      setPlacesLoading(false);
-    }
+    // 정적 배포에서는 API를 사용할 수 없으므로 바로 지도 URL 제공
+    const query = menu.name + ' 맛집';
+    setSearchUrls({
+      kakao: 'https://map.kakao.com/link/search/' + encodeURIComponent(query),
+      naver: 'https://map.naver.com/v5/search/' + encodeURIComponent(query),
+    });
+    setPlacesLoading(false);
   };
 
   // 즐겨찾기 토글
