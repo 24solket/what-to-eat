@@ -17,6 +17,8 @@ export interface Menu {
     rainy?: boolean;
   };
   timeSlots: string[];
+  priceMin: number;  // 최저가 (원)
+  priceMax: number;  // 최고가 (원)
 }
 
 export const MENUS: Menu[] = [

@@ -69,6 +69,9 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState<'recommend' | 'favorites'>('recommend');
   const [showFavoriteToast, setShowFavoriteToast] = useState<string | null>(null);
 
+  // 재방문 관련 상태
+  const [revisits, setRevisits] = useState<{[menuId: string]: number}>({});
+
   // 배달앱 관련 상태
   const [showDeliveryModal, setShowDeliveryModal] = useState(false);
   const [deliveryMenu, setDeliveryMenu] = useState<Menu | RecommendedMenu | null>(null);
@@ -83,12 +86,26 @@ export default function Home() {
         setFavorites([]);
       }
     }
+    // 재방문 데이터 로드
+    const savedRevisits = localStorage.getItem('menu-revisits');
+    if (savedRevisits) {
+      try {
+        setRevisits(JSON.parse(savedRevisits));
+      } catch {
+        setRevisits({});
+      }
+    }
   }, []);
 
   // 즐겨찾기 저장
   useEffect(() => {
     localStorage.setItem('menu-favorites', JSON.stringify(favorites));
   }, [favorites]);
+
+  // 재방문 저장
+  useEffect(() => {
+    localStorage.setItem('menu-revisits', JSON.stringify(revisits));
+  }, [revisits]);
 
   useEffect(() => {
     setTimeSlot(getTimeSlot());
@@ -178,6 +195,20 @@ export default function Home() {
     return favorites.some((f) => f.id === menuId);
   };
 
+  // 재방문 추가
+  const addRevisit = (menuId: string, menuName: string) => {
+    setRevisits(prev => ({
+      ...prev,
+      [menuId]: (prev[menuId] || 0) + 1
+    }));
+    setShowFavoriteToast(menuName + ' 재방문 +1! 🔄');
+    setTimeout(() => setShowFavoriteToast(null), 2000);
+  };
+
+  const getRevisitCount = (menuId: string) => {
+    return revisits[menuId] || 0;
+  };
+
   // 배달앱 열기
   const openDeliveryModal = (menu: Menu | RecommendedMenu) => {
     setDeliveryMenu(menu);
@@ -244,6 +275,10 @@ export default function Home() {
     }
   };
 
+  const formatPrice = (price: number) => {
+    return price.toLocaleString() + '원';
+  };
+
   const renderMenuCard = (menu: Menu | RecommendedMenu, idx: number, isRecommended: boolean = false) => {
     const reason = 'reason' in menu ? menu.reason : null;
 
@@ -298,13 +333,26 @@ export default function Home() {
           )}
 
           {/* Icons */}
-          <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
+          <div className="flex items-center gap-4 text-sm text-gray-500 mb-2">
             <span title="칼로리">
               {getCalorieIcon(menu.calories)} {menu.calories === 'low' ? '저' : menu.calories === 'medium' ? '중' : '고'}칼로리
             </span>
             <span title="포만감">
               {getFullnessIcon(menu.fullness)} {menu.fullness === 'light' ? '가벼움' : menu.fullness === 'medium' ? '보통' : '든든'}
             </span>
+          </div>
+
+          {/* 가격 정보 */}
+          <div className="flex items-center gap-2 mb-3">
+            <span className="text-lg">💰</span>
+            <span className="text-sm font-semibold text-green-600">
+              {formatPrice(menu.priceMin)} ~ {formatPrice(menu.priceMax)}
+            </span>
+            {getRevisitCount(menu.id) > 0 && (
+              <span className="ml-auto px-2 py-0.5 bg-purple-100 text-purple-600 text-xs rounded-full font-semibold">
+                🔄 {getRevisitCount(menu.id)}회 재방문
+              </span>
+            )}
           </div>
 
           {/* Tags */}
@@ -340,6 +388,17 @@ export default function Home() {
             >
               <span>🛵</span>
               배달
+            </button>
+            {/* 재방문 버튼 */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                addRevisit(menu.id, menu.name);
+              }}
+              className="py-2 px-3 bg-gradient-to-r from-purple-400 to-indigo-500 text-white font-semibold rounded-xl hover:from-purple-500 hover:to-indigo-600 transition-all transform hover:scale-[1.02] flex items-center justify-center text-sm"
+              title="맛있어서 또 갈래요!"
+            >
+              🔄
             </button>
           </div>
         </div>
@@ -634,13 +693,15 @@ export default function Home() {
             </div>
 
             {/* 모달 푸터 */}
-            {!placesLoading && searchUrls && (
-              <div className="border-t p-4 bg-gray-50">
-                <p className="text-center text-sm text-gray-400">
-                  💡 카카오 API 키를 등록하면 여기서 바로 맛집 목록을 볼 수 있어요
-                </p>
-              </div>
-            )}
+            <div className="border-t p-4 bg-gray-50">
+              <button
+                onClick={() => setShowModal(false)}
+                className="w-full py-3 bg-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-300 transition-all flex items-center justify-center gap-2"
+              >
+                <span>←</span>
+                메뉴 목록으로 돌아가기
+              </button>
+            </div>
           </div>
         </div>
       )}
@@ -698,6 +759,13 @@ export default function Home() {
               <p className="text-center text-sm text-gray-400 mt-4">
                 💡 선택한 앱에서 &quot;{deliveryMenu.name}&quot; 검색 결과가 열립니다
               </p>
+              <button
+                onClick={() => setShowDeliveryModal(false)}
+                className="w-full mt-4 py-3 bg-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-300 transition-all flex items-center justify-center gap-2"
+              >
+                <span>←</span>
+                메뉴 목록으로 돌아가기
+              </button>
             </div>
           </div>
         </div>
