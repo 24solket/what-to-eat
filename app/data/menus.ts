@@ -38,6 +38,8 @@ export const MENUS: Menu[] = [
     situations: ['혼밥', '다이어트', '간단'],
     weather: { hot: true },
     timeSlots: ['점심', '저녁'],
+    priceMin: 9000,
+    priceMax: 14000,
   },
   {
     id: 'bibim-naengmyeon',
@@ -54,6 +56,8 @@ export const MENUS: Menu[] = [
     situations: ['혼밥', '든든'],
     weather: { hot: true },
     timeSlots: ['점심', '저녁'],
+    priceMin: 9000,
+    priceMax: 14000,
   },
   {
     id: 'kongguksu',
@@ -70,6 +74,8 @@ export const MENUS: Menu[] = [
     situations: ['혼밥', '다이어트', '간단'],
     weather: { hot: true },
     timeSlots: ['점심', '저녁'],
+    priceMin: 9000,
+    priceMax: 13000,
   },
   {
     id: 'jjajangmyeon',
@@ -86,6 +92,8 @@ export const MENUS: Menu[] = [
     situations: ['혼밥', '든든', '가족'],
     weather: {},
     timeSlots: ['점심', '저녁', '야식'],
+    priceMin: 7000,
+    priceMax: 10000,
   },
   {
     id: 'jjamppong',
@@ -102,6 +110,8 @@ export const MENUS: Menu[] = [
     situations: ['혼밥', '든든'],
     weather: { cold: true, rainy: true },
     timeSlots: ['점심', '저녁', '야식'],
+    priceMin: 8000,
+    priceMax: 12000,
   },
   {
     id: 'ramen',
@@ -118,6 +128,8 @@ export const MENUS: Menu[] = [
     situations: ['혼밥', '간단'],
     weather: { cold: true, rainy: true },
     timeSlots: ['점심', '저녁', '야식'],
+    priceMin: 4000,
+    priceMax: 8000,
   },
   {
     id: 'kalguksu',
@@ -134,6 +146,8 @@ export const MENUS: Menu[] = [
     situations: ['혼밥', '가족', '든든'],
     weather: { cold: true, rainy: true },
     timeSlots: ['점심', '저녁'],
+    priceMin: 8000,
+    priceMax: 12000,
   },
   {
     id: 'japchae',
@@ -150,6 +164,8 @@ export const MENUS: Menu[] = [
     situations: ['가족', '데이트', '든든'],
     weather: {},
     timeSlots: ['점심', '저녁'],
+    priceMin: 9000,
+    priceMax: 14000,
   },
 
   // 밥류
@@ -168,6 +184,8 @@ export const MENUS: Menu[] = [
     situations: ['혼밥', '다이어트', '든든'],
     weather: {},
     timeSlots: ['점심', '저녁'],
+    priceMin: 8000,
+    priceMax: 15000,
   },
   {
     id: 'gimbap',
@@ -184,6 +202,8 @@ export const MENUS: Menu[] = [
     situations: ['혼밥', '간단', '다이어트'],
     weather: {},
     timeSlots: ['아침', '점심', '저녁'],
+    priceMin: 3000,
+    priceMax: 6000,
   },
   {
     id: 'bokkeumbap',
@@ -200,6 +220,8 @@ export const MENUS: Menu[] = [
     situations: ['혼밥', '든든', '간단'],
     weather: {},
     timeSlots: ['점심', '저녁', '야식'],
+    priceMin: 7000,
+    priceMax: 12000,
   },
   {
     id: 'cupbap',
@@ -216,6 +238,8 @@ export const MENUS: Menu[] = [
     situations: ['혼밥', '든든'],
     weather: {},
     timeSlots: ['점심', '저녁'],
+    priceMin: 8000,
+    priceMax: 13000,
   },
   {
     id: 'curry',
@@ -232,6 +256,8 @@ export const MENUS: Menu[] = [
     situations: ['혼밥', '가족', '든든'],
     weather: { rainy: true },
     timeSlots: ['점심', '저녁'],
+    priceMin: 8000,
+    priceMax: 15000,
   },
   {
     id: 'omurice',
@@ -248,6 +274,8 @@ export const MENUS: Menu[] = [
     situations: ['혼밥', '데이트', '간단'],
     weather: {},
     timeSlots: ['점심', '저녁'],
+    priceMin: 8000,
+    priceMax: 13000,
   },
 
   // 국/찌개
@@ -266,6 +294,8 @@ export const MENUS: Menu[] = [
     situations: ['혼밥', '가족', '든든', '회식'],
     weather: { cold: true, rainy: true },
     timeSlots: ['점심', '저녁'],
+    priceMin: 8000,
+    priceMax: 12000,
   },
   {
     id: 'doenjang-jjigae',
@@ -282,6 +312,8 @@ export const MENUS: Menu[] = [
     situations: ['혼밥', '가족', '다이어트'],
     weather: { cold: true, rainy: true },
     timeSlots: ['점심', '저녁'],
+    priceMin: 8000,
+    priceMax: 12000,
   },
   {
     id: 'sundubu-jjigae',
@@ -298,6 +330,8 @@ export const MENUS: Menu[] = [
     situations: ['혼밥', '다이어트', '든든'],
     weather: { cold: true, rainy: true },
     timeSlots: ['점심', '저녁'],
+    priceMin: 8000,
+    priceMax: 12000,
   },
   {
     id: 'budae-jjigae',
@@ -314,6 +348,8 @@ export const MENUS: Menu[] = [
     situations: ['가족', '회식', '든든'],
     weather: { cold: true, rainy: true },
     timeSlots: ['점심', '저녁'],
+    priceMin: 12000,
+    priceMax: 25000,
   },
   {
     id: 'samgyetang',
@@ -330,6 +366,8 @@ export const MENUS: Menu[] = [
     situations: ['가족', '든든'],
     weather: { hot: true },
     timeSlots: ['점심', '저녁'],
+    priceMin: 15000,
+    priceMax: 20000,
   },
   {
     id: 'seolleongtang',
@@ -346,6 +384,8 @@ export const MENUS: Menu[] = [
     situations: ['혼밥', '해장', '든든'],
     weather: { cold: true },
     timeSlots: ['아침', '점심', '저녁'],
+    priceMin: 10000,
+    priceMax: 15000,
   },
   {
     id: 'gamjatang',
@@ -362,6 +402,8 @@ export const MENUS: Menu[] = [
     situations: ['가족', '회식', '든든'],
     weather: { cold: true, rainy: true },
     timeSlots: ['저녁', '야식'],
+    priceMin: 12000,
+    priceMax: 35000,
   },
 
   // 고기류
@@ -380,6 +422,8 @@ export const MENUS: Menu[] = [
     situations: ['가족', '회식', '데이트', '든든'],
     weather: {},
     timeSlots: ['저녁', '야식'],
+    priceMin: 15000,
+    priceMax: 25000,
   },
   {
     id: 'bulgogi',
@@ -396,6 +440,8 @@ export const MENUS: Menu[] = [
     situations: ['가족', '데이트', '든든'],
     weather: {},
     timeSlots: ['점심', '저녁'],
+    priceMin: 12000,
+    priceMax: 20000,
   },
   {
     id: 'chicken',
@@ -412,6 +458,8 @@ export const MENUS: Menu[] = [
     situations: ['가족', '회식', '든든'],
     weather: {},
     timeSlots: ['저녁', '야식'],
+    priceMin: 18000,
+    priceMax: 30000,
   },
   {
     id: 'jokbal',
@@ -428,6 +476,8 @@ export const MENUS: Menu[] = [
     situations: ['가족', '회식', '든든'],
     weather: {},
     timeSlots: ['저녁', '야식'],
+    priceMin: 30000,
+    priceMax: 50000,
   },
   {
     id: 'bossam',
@@ -444,6 +494,8 @@ export const MENUS: Menu[] = [
     situations: ['가족', '회식', '든든'],
     weather: {},
     timeSlots: ['저녁', '야식'],
+    priceMin: 25000,
+    priceMax: 45000,
   },
   {
     id: 'donkatsu',
@@ -460,6 +512,8 @@ export const MENUS: Menu[] = [
     situations: ['혼밥', '든든'],
     weather: {},
     timeSlots: ['점심', '저녁'],
+    priceMin: 9000,
+    priceMax: 18000,
   },
 
   // 분식
@@ -478,6 +532,8 @@ export const MENUS: Menu[] = [
     situations: ['혼밥', '간단'],
     weather: { rainy: true },
     timeSlots: ['점심', '저녁', '야식'],
+    priceMin: 4000,
+    priceMax: 8000,
   },
   {
     id: 'sundae',
@@ -494,6 +550,8 @@ export const MENUS: Menu[] = [
     situations: ['혼밥', '간단'],
     weather: { cold: true },
     timeSlots: ['점심', '저녁', '야식'],
+    priceMin: 5000,
+    priceMax: 12000,
   },
   {
     id: 'mandu',
@@ -510,6 +568,8 @@ export const MENUS: Menu[] = [
     situations: ['혼밥', '간단'],
     weather: { cold: true },
     timeSlots: ['점심', '저녁', '야식'],
+    priceMin: 5000,
+    priceMax: 10000,
   },
 
   // 샐러드/건강식
@@ -528,6 +588,8 @@ export const MENUS: Menu[] = [
     situations: ['혼밥', '다이어트', '간단'],
     weather: { hot: true },
     timeSlots: ['아침', '점심', '저녁'],
+    priceMin: 8000,
+    priceMax: 15000,
   },
   {
     id: 'poke',
@@ -544,6 +606,8 @@ export const MENUS: Menu[] = [
     situations: ['혼밥', '다이어트', '데이트'],
     weather: { hot: true },
     timeSlots: ['점심', '저녁'],
+    priceMin: 12000,
+    priceMax: 18000,
   },
   {
     id: 'sandwich',
@@ -560,6 +624,8 @@ export const MENUS: Menu[] = [
     situations: ['혼밥', '간단', '다이어트'],
     weather: {},
     timeSlots: ['아침', '점심'],
+    priceMin: 5000,
+    priceMax: 12000,
   },
 
   // 양식
@@ -578,6 +644,8 @@ export const MENUS: Menu[] = [
     situations: ['데이트', '든든'],
     weather: {},
     timeSlots: ['점심', '저녁'],
+    priceMin: 12000,
+    priceMax: 22000,
   },
   {
     id: 'pizza',
@@ -594,6 +662,8 @@ export const MENUS: Menu[] = [
     situations: ['가족', '회식', '든든'],
     weather: {},
     timeSlots: ['점심', '저녁', '야식'],
+    priceMin: 15000,
+    priceMax: 35000,
   },
   {
     id: 'steak',
@@ -610,6 +680,8 @@ export const MENUS: Menu[] = [
     situations: ['데이트', '든든'],
     weather: {},
     timeSlots: ['점심', '저녁'],
+    priceMin: 25000,
+    priceMax: 60000,
   },
   {
     id: 'hamburger',
@@ -626,6 +698,8 @@ export const MENUS: Menu[] = [
     situations: ['혼밥', '간단', '든든'],
     weather: {},
     timeSlots: ['점심', '저녁', '야식'],
+    priceMin: 7000,
+    priceMax: 15000,
   },
 
   // 일식
@@ -644,6 +718,8 @@ export const MENUS: Menu[] = [
     situations: ['데이트', '회식', '든든'],
     weather: {},
     timeSlots: ['점심', '저녁'],
+    priceMin: 15000,
+    priceMax: 40000,
   },
   {
     id: 'udon',
@@ -660,6 +736,8 @@ export const MENUS: Menu[] = [
     situations: ['혼밥', '간단'],
     weather: { cold: true, rainy: true },
     timeSlots: ['점심', '저녁'],
+    priceMin: 8000,
+    priceMax: 12000,
   },
   {
     id: 'ramen-jp',
@@ -676,6 +754,8 @@ export const MENUS: Menu[] = [
     situations: ['혼밥', '든든'],
     weather: { cold: true, rainy: true },
     timeSlots: ['점심', '저녁', '야식'],
+    priceMin: 10000,
+    priceMax: 16000,
   },
 
   // 아침 특화
@@ -694,6 +774,8 @@ export const MENUS: Menu[] = [
     situations: ['혼밥', '다이어트', '간단'],
     weather: { cold: true },
     timeSlots: ['아침', '점심'],
+    priceMin: 8000,
+    priceMax: 15000,
   },
   {
     id: 'toast',
@@ -710,6 +792,8 @@ export const MENUS: Menu[] = [
     situations: ['혼밥', '간단'],
     weather: {},
     timeSlots: ['아침'],
+    priceMin: 3000,
+    priceMax: 7000,
   },
   {
     id: 'egg-meal',
@@ -726,6 +810,8 @@ export const MENUS: Menu[] = [
     situations: ['혼밥', '간단', '다이어트'],
     weather: {},
     timeSlots: ['아침', '점심'],
+    priceMin: 5000,
+    priceMax: 10000,
   },
 ];
 
