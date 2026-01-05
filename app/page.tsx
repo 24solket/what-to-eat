@@ -96,39 +96,37 @@ export default function Home() {
   }, []);
 
   const fetchWeather = async () => {
-    try {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          async (position) => {
-            const { latitude, longitude } = position.coords;
-            setUserLocation({ lat: latitude, lon: longitude });
-            const res = await fetch(`/api/weather?lat=${latitude}&lon=${longitude}`);
-            const data = await res.json();
-            setWeather(data);
-            setLoading(false);
-          },
-          async () => {
-            const res = await fetch('/api/weather');
-            const data = await res.json();
-            setWeather(data);
-            setLoading(false);
-          }
-        );
-      } else {
-        const res = await fetch('/api/weather');
-        const data = await res.json();
-        setWeather(data);
-        setLoading(false);
-      }
-    } catch {
-      setWeather({
-        temperature: 20,
-        sky: 'clear',
-        precipitation: 'none',
-        humidity: 50,
-      });
-      setLoading(false);
+    // 현재 시간 기반 기본 날씨 설정 (정적 배포용)
+    const month = new Date().getMonth() + 1;
+
+    // 계절별 기본 온도 설정
+    let temperature = 20;
+    if (month >= 3 && month <= 5) temperature = 15;
+    else if (month >= 6 && month <= 8) temperature = 28;
+    else if (month >= 9 && month <= 11) temperature = 15;
+    else temperature = 0;
+
+    // 위치 정보 저장 (지도 검색용)
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setUserLocation({ lat: position.coords.latitude, lon: position.coords.longitude });
+        },
+        () => {
+          setUserLocation({ lat: 37.5665, lon: 126.978 });
+        }
+      );
+    } else {
+      setUserLocation({ lat: 37.5665, lon: 126.978 });
     }
+
+    setWeather({
+      temperature,
+      sky: 'clear',
+      precipitation: 'none',
+      humidity: 50,
+    });
+    setLoading(false);
   };
 
   const handleRecommend = () => {
